@@ -6,7 +6,7 @@ This project is designed for educational purposes. Redistribution, modification,
 ### Description:
 This demonstrates how to set up a DuckDB database and interact with it using Python for data ingestion. It is similar to what we did in [[https://github.com/Rasagna29/ingest_data_with_python](https://github.com/Rasagna29/ingest_data_from_file_with_python)](ingest_data_with_python), but the main difference lies in the method of ingesting data into the DuckDB database. In the previous approach, we ingested data by running SQL queries from Python scripts. In this version, the assumption is that data is made available as CSV files in a directory. The script monitors the directory in real time to consume new files, process them, and ingest the data into the database.
 
-We attempted to search the directory in two ways. The first method uses a custom Python implementation called watch_directory in /scripts/watch_directory_custom_script.py. When executed, it checks if the directory (/files/watch_directory_uploads) contains new files. If a new file is found and the data passes the validation check, it is processed and ingested into the database. The script then sleeps for 30 seconds before rerunning the check to see if any new files are available. To test this, upload the order_data_202412110923.csv file only to /files/watch_directory_uploads and allow the watch_directory_custom_script.py script to identify and process it. The script will print "Search is over, the next search is in 30 seconds." If you upload another file within those 30 seconds, the script will identify and process it once the next cycle starts.
+We attempted to search the directory in two ways. The first method uses a custom Python implementation called watch_directory in /scripts/watch_directory_custom_script.py. When executed, it checks if the directory (/files/watch_directory_uploads) contains new files. If a new file is found and the data passes the validation check, it is processed and ingested into the database. The script then sleeps for 30 seconds before rerunning the check to see if any new files are available. To test this, upload the order_data_202412110923.csv file only to /files/watch_directory_uploads and allow the watch_directory_custom_script.py script to identify and process it. The script will print "Search is over, the next search is in 30 seconds." Then start uploading other files within the next run(i.e 30 seconds), the script will identify and process it once the next cycle starts.
 
 In contrast, the /scripts/watchdog_python_library.py method works using an observer pattern. As soon as a new file is uploaded to /files/watchdog_uploads, it is immediately picked up for processing, and the data is ingested without waiting for a time interval as in the first method.
 
@@ -39,7 +39,7 @@ cd ingest_data_from_file_with_python/
 ### 5. Create and Activate a Virtual Environment
 To keep the dependencies isolated, create and activate a Python virtual environment:
 
-##### To create Python virtual environment  (this is done for each project)
+##### To create Python virtual environment  (this is done for each project to ensure the dependencies of this project are isolated from other projects)
 python3 -m venv venv
 
 ##### To activate Python virtual environment
