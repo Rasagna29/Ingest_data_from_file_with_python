@@ -1,0 +1,16 @@
+orderId,sourceOrderId,deliveryDate,orderItems,shippingFromAddress,shippingToAddress,pickingDeadline,packingDeadline,shippingDeadline
+O00000002,S123456,2024-12-24,"[
+  {'itemName':'Macbook Air 2024','itemId':1,'quantity':1.0}
+  ]","{
+  'street': '123 Shipping Ave',
+  'city': 'Shipped City',
+  'state': 'SC',
+  'zipcode': '5666678',
+  'country': 'Country A'
+  }","{
+  'street': '456 Delivery Rd',
+  'city': 'Delivered City',
+  'state': 'DC',
+  'zipcode': '5666789',
+  'country': 'Country B'
+  }",2024-12-21 18:00,2024-12-21 20:00,2024-12-22 18:00
